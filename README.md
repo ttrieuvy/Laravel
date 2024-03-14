@@ -83,39 +83,52 @@ laravel new tenProject
    Route::get('patch/{para1?}/{para2?}', function($para1=null, $para2=null))
 ```
 
-    với:
+-   với:
 
-    -   patch là đường route
-    -   para1, para2 là tham số truyền vào, khi thêm dấu '?' đằng sau para thì có nghĩa là para này có hay không cũng được, nhưng nếu muốn không có lỗi thì biến nhận giá trị của para phải khai báo giá trị mặc định
-    -   $para1, $para2 là biến sẽ nhận giá trị từ para para1 và para2, 2 biến này được khai báo giá trị mặc định là null
-        => vị trí tham số truyền vào như thế nào, thì đặt biến nhận giá trị cũng đúng vị trí như vậy
-        => para một khi đã định nghĩa trên patch thì bắt buộc phải có, trừ khi mình thêm dấu '?' để định nghĩa rằng tham số này có hay không cũng được
+*   patch là đường route
+*   para1, para2 là tham số truyền vào, khi thêm dấu '?' đằng sau para thì có nghĩa là para này có hay không cũng được, nhưng nếu muốn không có lỗi thì biến nhận giá trị của para phải khai báo giá trị mặc định
+*   $para1, $para2 là biến sẽ nhận giá trị từ para para1 và para2, 2 biến này được khai báo giá trị mặc định là null
+    ** vị trí tham số truyền vào như thế nào, thì đặt biến nhận giá trị cũng đúng vị trí như vậy **
+    ** para một khi đã định nghĩa trên patch thì bắt buộc phải có, trừ khi mình thêm dấu '?' để định nghĩa rằng tham số này có hay không cũng được **
 
 -   đặt name cho route
-    -- không có param
+
+*   không có param
+
+```
     => route 1
     Route::get('route1', function(){})->name(name-route1);
     => view 2
     <a href="<?php echo route('name-route1') ?>">Chuyển trang</a>
+```
 
-    -- có param
+-   có param
+
+```
     => route 1
     Route::get('route1/{param1?}', function($param1=null){})->name(name-route1)
     => view 2
     <a href="<?php echo route('name-route1', [param1 => 123]) ?>">Chuyển trang</a>
+```
 
 # day 4
 
 ## Controller
 
 -   Khởi tạo controller
+
+```
     php artisan make:controller TenController
-    => lưu ý tên của controller phải trùng với
+```
+
+    => lưu ý tên của controller phải trùng với tên class trong Controller
 
 -   muốn dùng controller nào thì phải khai báo controller đó trong web.php
 
 ## resource
 
+```
 php artisan make:controller TenController --resource
+```
 
 -   là câu lệnh tạo ra 1 controller có sẵn những phương thức làm việc với model
