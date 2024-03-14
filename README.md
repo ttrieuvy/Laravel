@@ -2,17 +2,19 @@
 
 ## khởi tạo thư mục laravel
 
+```
 laravel new tenProject
+```
 
 ## vòng đời request của laravel
 
--   đầu tiên sẽ chạy vào public/index.php
--   chạy vào boostrap/app.php
--   chạy vào app/http/kernel.php để tiền xử lý các request
--   chạy vào folder provider
--   chạy vào routes để xem xét nên chạy vào route nào
--   chạy vào middleware để lọc các điều kiện, nếu bộ lọc cho phép thì đi tiếp, không thì dừng lại
--   chạy vào controller để action đến xử lý từng model liên quan
+1. đầu tiên sẽ chạy vào public/index.php
+2. chạy vào boostrap/app.php
+3. chạy vào app/http/kernel.php để tiền xử lý các request
+4. chạy vào folder provider
+5. chạy vào routes để xem xét nên chạy vào route nào
+6. chạy vào middleware để lọc các điều kiện, nếu bộ lọc cho phép thì đi tiếp, không thì dừng lại
+7. chạy vào controller để action đến xử lý từng model liên quan
 
 ## cấu hình laravel
 
@@ -33,8 +35,11 @@ laravel new tenProject
    nó sẽ tạo ra các model mẫu trong table đã cấu hình trong file .env
 
 6. Bật chế độ bảo trì
-   => turn on: php artisan down
-   => turn off: php artisan up
+
+```
+   php artisan down //turn on
+   php artisan up //turn off
+```
 
 -   Khi bật chế độ này, bạn cần phải tạo 1 folder errors trong views để báo lỗi
 
@@ -42,10 +47,10 @@ laravel new tenProject
 
 -   có 4 loại route
 
-*   route web: web.php
-*   route api: api.php
-*   route console: console.php
-*   route channels: channels.php
+** route web: web.php
+** route api: api.php
+** route console: console.php
+** route channels: channels.php
 
 # day 2
 
@@ -54,8 +59,11 @@ laravel new tenProject
 ### method
 
 -   tất cả các phương thức ngoại trừ GET và OPTION, muốn gửi được thì cần phải gọi token
+
+```
     => csrf_token(): phải để trong 1 input
     => csrf_field(): laravel tự tạo input để dùng
+```
 
 1. match: nhận được nhiều request, nghĩa là khi bạn truy cập đến route bằng phương thức nào bạn đã khai báo ở Route thì bạn sẽ vô được Route đấy
    => Route::match([$method, $method], 'duongDan', function (){});
@@ -69,8 +77,12 @@ laravel new tenProject
 
 ### parameter
 
--   truyền para
-    => Route::get('patch/{para1?}/{para2?}', function($para1=null, $para2=null))
+-   truyền para ở Route
+
+```
+   Route::get('patch/{para1?}/{para2?}', function($para1=null, $para2=null))
+```
+
     với:
 
     -   patch là đường route
