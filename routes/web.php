@@ -3,48 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ProductController as ControllerProduct;
+use App\Http\Controllers\Admin\ProductsController as ControllerProduct;
 use App\Http\Controllers\Admin\CategoriesController ;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::match(['put','delete','patch'], 'hihi', function(Request $request){
-//     return $request->method();
-// });
-// Route::any('hihi', function(Request $request){
-//     return $request->method();
-// });
-
-// Route::get('hihi', function(){
-// //    $user = new User();
-// //    $allUser = $user::all();
-// //    dd($allUser);
-//     return view('home');
-// });
-
-
-// Route::redirect('hihi','https://facebook.com'); //khi người dùng truy cập đến route hihi sẽ được chuyển đến trang facebook 
-
-// Route::get('hihi', function(){
-//     return  view('trangchu');
-// });
-
-// Route::get('hihi/{id?}', function($id =  null){
-//     $content = 'số trên URL là ';
-//     $content .=  $id;
-//     return $content;
-// })->name('trang-chu');
-
+Route::get('/', function (){
+    return view("show-form");
+})->name('trang-chu');
 
 
 // làm việc với controller
 Route::prefix('products')->group(function(){
 
     // lấy danh sách sản phẩm
-    Route::get('/', [ControllerProduct::class, 'index'])->name('products.index');
+    Route::get('/', [ControllerProduct::class, 'index']);
 
     // lấy chi tiết 1 sản phẩm (GET)
     Route::get('/get-product/{id?}', [ControllerProduct::class, 'getProduct'])->name('products.get-product');
@@ -63,7 +35,10 @@ Route::prefix('products')->group(function(){
     Route::delete('delete-product/{id?}', [ControllerProduct::class, 'deleteProduct'])->name('products.delete-product');
 });
 
-Route::prefix('admin')->group(function(){
+
+Route::middleware('checkLogin.admin')->prefix('admin')->group(function(){
+    Route::middleware('checkLogin.admin')->get('/', [CategoriesController::class, 'test']);
+
     Route::resource('categories',CategoriesController::class);
 });
 

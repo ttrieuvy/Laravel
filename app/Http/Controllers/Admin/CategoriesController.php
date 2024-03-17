@@ -62,4 +62,8 @@ class CategoriesController extends Controller
     {
         //
     }
+
+    public function test() {
+        return 'đây là bản test nè';
+    }
 }

@@ -2,47 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public  function __construct()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-
+        //
     }
 
-    //hiển thị danh sách sản phẩm
-    public function index(){
-        return view('clients/products/product');
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
-    // lấy ra 1 sản phẩm theo id
-    public function getProduct($id=null){
-        return view('clients/products/detail',  ['id' => 
-     $id]);
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
-    //cập nhật 1 sản phẩm (POST)
-    public function handleUpdateProduct($id){
-        return 'submit sửa sản phẩm';
-
+    /**
+     * Display the specified resource.
+     */
+    public function show(Product $product)
+    {
+        //
     }
 
-    //thêm 1 sản phẩm (GET)
-    public function formAddProduct(){
-        return view('clients/products/add');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Product $product)
+    {
+        //
     }
 
-
-    //tạo 1 sản phẩm (POST)
-    public function handleAddProduct(){
-        // return redirect(route('products.add-product'));
-        return 'submit thêm sản phẩm';
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Product $product)
+    {
+        //
     }
 
-    //xóa 1 sản phẩm (delete)
-    public function deleteProduct($id){
-        return 'submit xóa sản phẩm';
-
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Product $product)
+    {
+        //
     }
 }
